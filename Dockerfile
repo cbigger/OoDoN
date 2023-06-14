@@ -20,10 +20,14 @@ RUN unzip main.zip && rm main.zip
 # Change directory to the unzipped folder (assuming the unzipped folder name is oobabooga_linux, change accordingly if not)
 WORKDIR /root/OoDoN-main
 
+RUN bash prep_env.sh > preplogs.txt
+RUN tail -n 30 preplogs.txt > runner.txt
+
+
 EXPOSE 7860
 
 # Add the start command as the default command for the container
-CMD ["bash", "prep_env.sh"]
+CMD ["/bin/bash"]
 
 # CMD ["/bin/bash"]
 
